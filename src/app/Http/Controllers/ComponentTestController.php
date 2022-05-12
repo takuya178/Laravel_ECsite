@@ -12,6 +12,6 @@ class ComponentTestController extends Controller
         return view('tests.component-test1', compact('message'));
     }
     public function showComponent2() {
-        return view('tests.component-test1');
+        return view('tests.component-test2');
     }
 }
