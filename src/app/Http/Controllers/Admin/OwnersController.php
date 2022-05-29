@@ -56,11 +56,22 @@ class OwnersController extends Controller
      */
     public function store(Request $request)
     {
+        // $requestはformで入力した値が入ってくる
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:admins'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
+
+        Owner::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+
+        return redirect()
+        ->route('admin.owners.index')
+        ->with('message', 'オーナー登録を実施しました');
     }
 
     /**
