@@ -23,6 +23,7 @@
                             <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">メールアドレス</th>
                             <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">作成日</th>
                             <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tr rounded-br"></th>
+                            <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tr rounded-br"></th>
                           </tr>
                         </thead>
                         <tbody>
@@ -34,6 +35,13 @@
                             <td class="px-4 py-3">
                               <button onclick="location.href='{{ route('admin.owners.edit', ['owner' => $owner->id]) }}'" class="text-black bg-yellow-200 border-0 py-2 px-4 focus:outline-none hover:bg-yellow-300 rounded">編集</button>
                             </td>
+                            <form method="post" action="{{ route('admin.owners.destroy', ['owner' => $owner->id]) }}">
+                              @csrf
+                              @method('delete');
+                            <td class="px-4 py-3">
+                              <a href='#' data-id="{{ $owner->id }}" onclick="deletePost(this)" class="text-black bg-red-200 border-0 py-2 px-4 focus:outline-none hover:bg-red-300 rounded">削除</a>
+                            </td>
+                          </form>
                           </tr>
                           @endforeach
                         </tbody>
@@ -45,4 +53,12 @@
           </div>
       </div>
   </div>
+<script>
+  deletePost = (e) => {
+    'use strict';
+    if (confirm('本当に削除してもよろしいですか？')) {
+      document.getElementById('delete_' + e.dataset.id).submit();
+    }
+  }
+</script>
 </x-app-layout>
