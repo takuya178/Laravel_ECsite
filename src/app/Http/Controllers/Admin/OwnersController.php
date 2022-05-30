@@ -33,7 +33,7 @@ class OwnersController extends Controller
         // $e_all = Owner::all();
         // $q_get = DB::table('owners')->select('name', 'created_at')->get();
 
-        $owners = Owner::select('name', 'email', 'created_at')->get();
+        $owners = Owner::select('id', 'name', 'email', 'created_at')->get();
 
         return view('admin.owners.index', compact('owners'));
     }
@@ -94,6 +94,8 @@ class OwnersController extends Controller
     public function edit($id)
     {
         //
+        $owner = Owner::findOrFail($id);
+        return view('admin.owners.edit', compact('owner'));
     }
 
     /**
