@@ -12,7 +12,7 @@
             <section class="text-gray-600 body-font">
               <div class="container px-5 mx-auto">
                 <div class="flex justify-end mb-4">
-                  <x-flash-message status="info" />
+                  <x-flash-message status="session('status')" />
                   <button onclick="location.href='{{ route('admin.owners.create') }}'" class="text-black bg-yellow-200 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-300 rounded text-lg">新規登録する</button>
                 </div>
                     <div class="lg:w-2/3 w-full mx-auto overflow-auto">
@@ -35,7 +35,7 @@
                             <td class="px-4 py-3">
                               <button onclick="location.href='{{ route('admin.owners.edit', ['owner' => $owner->id]) }}'" class="text-black bg-yellow-200 border-0 py-2 px-4 focus:outline-none hover:bg-yellow-300 rounded">編集</button>
                             </td>
-                            <form method="post" action="{{ route('admin.owners.destroy', ['owner' => $owner->id]) }}">
+                            <form id="delete_{{ $owner->id }}" method="post" action="{{ route('admin.owners.destroy', ['owner' => $owner->id]) }}">
                               @csrf
                               @method('delete');
                             <td class="px-4 py-3">
