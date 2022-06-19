@@ -10,6 +10,11 @@ class Shop extends Model
 {
     use HasFactory;
 
+    public function Owner()
+    {
+        return $this->belongsTo(Owner::class);
+    }
+
     protected $fillable = [
         'owner_id',
         'name',
@@ -17,10 +22,4 @@ class Shop extends Model
         'filename',
         'is_selling'
     ];
-
-
-    public function Owner()
-    {
-        return $this->belongsTo(Owner::class);
-    }
 }
