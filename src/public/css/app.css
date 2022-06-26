@@ -1590,6 +1590,10 @@ select {
   .md\:border-l {
     border-left-width: 1px;
   }
+
+  .md\:p-4 {
+    padding: 1rem;
+  }
 }
 @media (min-width: 1024px) {
 
