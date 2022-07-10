@@ -37,7 +37,7 @@ class ImageController extends Controller
         ->orderBy('updated_at', 'desc')
         ->paginate(20);
 
-        return view('owner.images.index', 
+        return view('owner.images.index',
         compact('images'));
     }
 
@@ -65,7 +65,7 @@ class ImageController extends Controller
                 $fileNameToStore = ImageService::upload($imageFile, 'products');    
                 Image::create([
                     'owner_id' => Auth::id(),
-                    'filename' => $fileNameToStore  
+                    'filename' => $fileNameToStore
                 ]);
             }
         }

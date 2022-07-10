@@ -10,7 +10,7 @@ if($type === 'products'){
 {{-- タイプによって画像を保存する場所を変更できる --}}
 <div>
   @if(empty($filename))
-    <img src="{{ asset('images/no_image.jpg')}}">
+    <img src="{{ asset('images/no_image.jpeg')}}">
   @else
     <img src="{{ asset($path . $filename)}}">
   @endif
