@@ -18,8 +18,8 @@ class ShopController extends Controller
         $this->middleware('auth:owners');
 
         $this->middleware(function ($request, $next) {
-            // dd($request->route()->parameter('shop')); //文字列
-            // dd(Auth::id()); //数字
+            // dd($request->route()->parameter('shop')); //文字列型
+            // dd(Auth::id()); //数字型
 
             $id = $request->route()->parameter('shop'); //shopのid取得
             if(!is_null($id)){ // null判定
